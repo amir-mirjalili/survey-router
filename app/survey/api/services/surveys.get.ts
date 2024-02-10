@@ -1,4 +1,4 @@
-import SurveyModel from "@/app/api/models/surveys.schema";
+import SurveyModel from "@/app/survey/api/models/surveys.schema";
 
 export class SurveysGet {
   async getByFilter(gender: string, age: number) {
