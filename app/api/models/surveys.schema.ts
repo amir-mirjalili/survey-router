@@ -1,11 +1,12 @@
 import { Schema } from "mongoose";
+
+import { DB } from "@/app/api/configs/mongodb.config";
+import { GENDER } from "@/app/api/models/surveys.enum";
 import {
   IMatchingProfile,
   IPrescreenQuestion,
   ISurvey,
-} from "@/app/survey/api/models/surveys.interface";
-import { DB } from "@/app/configs/mongodb.config";
-import { GENDER } from "@/app/survey/api/models/surveys.enum";
+} from "@/app/api/models/surveys.interface";
 
 const matchingProfileSchema = new Schema<IMatchingProfile>({
   gender: [{ type: String, enum: Object.values(GENDER) }],
@@ -21,7 +22,7 @@ const prescreenQuestionSchema = new Schema<IPrescreenQuestion>({
 });
 
 const surveySchema = new Schema<ISurvey>({
-  id: { type: String, required: true },
+  _id: { type: String, required: true },
   reward_amount: { type: Number, required: true },
   link: { type: String, required: true },
   matching_profile: { type: matchingProfileSchema, required: true },

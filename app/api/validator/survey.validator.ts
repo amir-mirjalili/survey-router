@@ -1,5 +1,5 @@
 import Joi from "joi";
-import { GENDER } from "@/app/survey/api/models/surveys.enum";
+import { GENDER } from "@/app/api/models/surveys.enum";
 export const surveyValidator = {
   search: Joi.object({
     age: Joi.number().required().required(),

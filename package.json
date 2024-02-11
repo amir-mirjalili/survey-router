@@ -9,11 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/dotenv": "^8.2.0",
     "@types/joi": "^17.2.3",
+    "@types/react-datepicker": "^4.19.6",
+    "dotenv": "^16.4.2",
     "joi": "^17.12.1",
     "mongoose": "^8.1.1",
     "next": "14.1.0",
+    "next-joi": "^2.2.1",
     "react": "^18",
+    "react-datepicker": "^6.1.0",
     "react-dom": "^18"
   },
   "devDependencies": {

@@ -1,8 +1,10 @@
-import SurveyModel from "@/app/survey/api/models/surveys.schema";
+import SurveyModel from "@/app/api/models/surveys.schema";
 
 export class SurveysGet {
-  async getByFilter(gender: string, age: number) {
+  async search(gender: string, age: number) {
     try {
+      console.log("gender:", gender);
+      console.log("age:", age);
       const response = await SurveyModel.find({
         "matching_profile.gender": gender,
         "matching_profile.age": age,
