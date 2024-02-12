@@ -18,7 +18,7 @@ const prescreenQuestionSchema = new Schema<IPrescreenQuestion>({
   title: { type: String },
   question_type: { type: String },
   possible_answers: [{ type: String }],
-  acceptable_answers: [{ type: String }],
+  acceptable_answer: [{ type: String }],
 });
 
 const surveySchema = new Schema<ISurvey>({
