@@ -43,12 +43,14 @@ export default function FillBirthdate({ gender }: { gender: string }) {
     const age = new Date().getFullYear() - selectedDate.getFullYear();
     try {
       let body;
-      body = await callApi(gender, age);
+      const { data } = await callApi(gender, age);
+      body = data;
       let skip = 0;
       if (Object.keys(body).length) {
         while (!body.prescreen_questions.length) {
           skip++;
-          body = await callApi(gender, age, skip);
+          const { data } = await callApi(gender, age, skip);
+          body = data;
         }
         setSuccess(true);
       }

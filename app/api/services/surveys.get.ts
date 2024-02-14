@@ -1,7 +1,11 @@
 import SurveyModel from "@/app/api/models/surveys.schema";
 
 export class SurveysGet {
-  async candidateSurvey(gender: string, age: number, skip = 0) {
+  async candidateSurvey(
+    gender: string,
+    age: number,
+    skip = 0
+  ): Promise<RestApi.ObjectResInterface> {
     try {
       const response = await SurveyModel.find({
         "matching_profile.gender": gender,
@@ -10,9 +14,15 @@ export class SurveysGet {
         .sort({ reward_amount: -1 })
         .limit(1)
         .skip(skip);
-      return response.length ? response[0] : {};
+      return {
+        is_success: true,
+        data: response.length ? response[0] : {},
+      };
     } catch (e) {
       console.log(e);
+      return {
+        is_success: false,
+      };
     }
   }
 }
