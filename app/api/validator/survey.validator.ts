@@ -1,10 +1,11 @@
 import Joi from "joi";
 import { GENDER } from "@/app/api/models/surveys.enum";
 export const surveyValidator = {
-  search: Joi.object({
-    age: Joi.number().required().required(),
+  candidate: Joi.object({
+    age: Joi.string().required(),
     gender: Joi.string()
       .valid(...Object.values(GENDER))
       .required(),
+    skip: Joi.string(),
   }),
 };
