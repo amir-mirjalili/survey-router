@@ -42,21 +42,11 @@ export default function FillBirthdate({ gender }: { gender: string }) {
     setLoading(true);
     const age = new Date().getFullYear() - selectedDate.getFullYear();
     try {
-      let body;
       const { data } = await callApi(gender, age);
-      body = data;
-      let skip = 0;
-      if (Object.keys(body).length) {
-        while (!body.prescreen_questions.length) {
-          skip++;
-          const { data } = await callApi(gender, age, skip);
-          body = data;
-        }
-        setSuccess(true);
-      }
       setLoading(false);
       setFetched(true);
-      setResponseBody(body);
+      setSuccess(true);
+      setResponseBody(data);
     } catch (error) {
       console.error("Error:", error);
       setLoading(false);
