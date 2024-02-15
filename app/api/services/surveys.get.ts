@@ -7,9 +7,11 @@ export class SurveysGet {
     skip = 0
   ): Promise<RestApi.ObjectResInterface> {
     try {
+      //added prescreen_questions condition to just return the records that has question
       const response = await SurveyModel.find({
         "matching_profile.gender": gender,
         "matching_profile.age": age,
+        "prescreen_questions.0": { $exists: true },
       })
         .sort({ reward_amount: -1 })
         .limit(1)
